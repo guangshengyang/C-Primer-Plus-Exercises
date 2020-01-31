@@ -1,3 +1,4 @@
+// Run the program in Shell, such as Windows CMD, UNix Terminal or directly on Linux
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
