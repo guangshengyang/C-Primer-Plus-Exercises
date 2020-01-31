@@ -1,4 +1,5 @@
 // The code have some problems, need to update
+//Do not fully use the binary search algorithm
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
