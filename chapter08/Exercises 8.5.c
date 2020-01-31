@@ -1,5 +1,3 @@
-// The code have some problems, need to update
-//Do not fully use the binary search algorithm
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
@@ -8,8 +6,8 @@ int main(void)
 {
     int initial_guess = 50;
     int guess = initial_guess;
-    int max = 100;
-    int min = guess;
+    int max = 100; //Upper bounds of the binary search algorithm
+    int min = 0;   //lower bounds of the binary search algorithm
     char ch;
 
     printf("Pick up a integer from 1 to 100. I will try to guess it.\n"
@@ -31,13 +29,14 @@ int main(void)
 
         while (ch == 'n')
         {
-            printf("Emm, is it greater than %d ? Please tell with with y or n\n",
-                   guess);
+            printf("Emm, is it greater than %d ? Tell with with y or n\n", guess);
 
             ch = getchar();
             while (getchar() != '\n')
                 continue;
 
+            //*When reply with yes, means answer is upper than your guess, only need to change the bigger number "max",
+            //"min" is initialized before
             if (ch == 'y')
             {
                 min = guess;                       //only min is changed
@@ -46,8 +45,7 @@ int main(void)
 
             else
             {
-                max = guess; //only max is changed
-                min = 0;
+                max = guess;                       //only max is changed
                 guess = max - (((max - min)) / 2); //update guess
             }
         }
