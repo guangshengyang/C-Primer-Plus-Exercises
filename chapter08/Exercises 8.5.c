@@ -17,7 +17,7 @@ int main(void)
         ch = getchar();
 
         while (getchar() != '\n')
-            continue;
+            continue;   //remove continue,only use ; is OK too.
 
         while (ch == 'y')
         {
@@ -31,7 +31,7 @@ int main(void)
 
             ch = getchar();
             while (getchar() != '\n')
-                continue;
+                continue;    //remove continue,only use ; is OK too.
 
             //*When reply with yes, means answer is upper than your guess, only need to change the bigger number "max",
             //"min" is initialized before
