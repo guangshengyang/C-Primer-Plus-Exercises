@@ -27,7 +27,6 @@ int main(void)
     double tax;
     double net_income;
 
-re:
     printf(" ********************************************************************\n"
            "Enter the number corresponding to the desired pay rate or action:\n"
            "a $8.75/hr                     b $9.33/hr\n"
@@ -35,35 +34,37 @@ re:
            "q quit\n"
            "********************************************************************\n");
     printf("Enter  \"a  b  c  d or q\"  Here:");
-    choice = getchar();
 
-    while (getchar() != '\n')
-        continue; //Skip remaining line breaks or line break will be see as a input too
-
-    if (choice >= 'a' && choice <= 'c')
+    while ((choice = getchar()) != EOF)
     {
-        printf("Your working hours per week:");
-        scanf("%lf", &hours);
+        while (getchar() != '\n')
+            continue; //Skip remaining line breaks or line break will be see as a input too
 
-        p_hour = map_choice_hour(choice);
-        total_wages = total_wages_count(p_hour, hours);
-        tax = tax_count(total_wages);
-        net_income = net_income_count(total_wages, tax);
+        if (choice >= 'a' && choice <= 'd')
+        {
+            printf("Your working hours per week:");
+            scanf("%lf", &hours);
 
-        printf("Total wages: %lf\n", total_wages);
-        printf("Tax: %lf\n", tax);
-        printf("Net income: %lf\n", net_income);
-    }
+            p_hour = map_choice_hour(choice);
+            total_wages = total_wages_count(p_hour, hours);
+            tax = tax_count(total_wages);
+            net_income = net_income_count(total_wages, tax);
 
-    else if (choice == 'q')
-    {
-        printf("Good Bye.");
-        return 0;
-    }
-    else
-    {
-        printf("Please check your input.\n");
-        goto re;
+            printf("Total wages: %lf\n", total_wages);
+            printf("Tax: %lf\n", tax);
+            printf("Net income: %lf\n", net_income);
+        }
+
+        else if (choice == 'q')
+        {
+            printf("Good Bye.");
+            return 0;
+        }
+        else
+        {
+            printf("Please check your input.Input again:");
+            continue;
+        }
     }
 
     return 0;
@@ -86,9 +87,8 @@ int map_choice_hour(char choice)
         break;
     case 'd':
         p_hour = 11.20;
-        break;
     default:
-        printf("Invaid input. Check your input.");
+        printf("default none here .");
         break;
     }
 
