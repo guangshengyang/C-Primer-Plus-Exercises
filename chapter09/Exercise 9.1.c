@@ -7,9 +7,12 @@ int main(void)
     double num_1, num_2;
 
     printf("Enter two numbers of type double:");
-    scanf("%lf %lf", &num_1, &num_2);
-    printf("The smaller value: %lf", imin(num_1, num_2));
 
+    while ((scanf("%lf %lf", &num_1, &num_2)) == 2) //skip non-numbers input
+    {
+        printf("The smaller value: %lf", imin(num_1, num_2));
+        break;
+    }
     return 0;
 }
 
