@@ -11,7 +11,7 @@ int main(void)
     while ((scanf("%lf %lf", &num_1, &num_2)) == 2) //skip non-numbers input
     {
         printf("The smaller value: %lf", imin(num_1, num_2));
-        break;
+        continue;
     }
     return 0;
 }
