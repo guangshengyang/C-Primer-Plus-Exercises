@@ -32,7 +32,7 @@ double power(double x, double exp)
         exp = abs(exp); // change negative number to absolute value
         for (int i = 0; i < exp; i++)
             pow *= x;
-        return -pow;
+        return 1 / pow;
     }
     else if (exp > 0)
     {
