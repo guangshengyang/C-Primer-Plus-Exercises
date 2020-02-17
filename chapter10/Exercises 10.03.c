@@ -19,7 +19,7 @@ int main(void)
 int find_max(int *ch)
 {
     int temp;
-    int max = -1;
+    int max = ch[0];
     for (int i = 0; i < LENGTH; i++)
     {
         if (*ch > max)
