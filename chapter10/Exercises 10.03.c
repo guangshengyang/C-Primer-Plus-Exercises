@@ -26,6 +26,6 @@ int find_max(int *ch)
             max = *ch;
         ch++;
     }
-
+    
     return max;
 }
