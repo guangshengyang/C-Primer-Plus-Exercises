@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define LENGTH 10
 
-int find_max(double *ch);
+int find_max_index(double ch[]);
 
 int main(void)
 {
@@ -11,14 +11,13 @@ int main(void)
     for (int i = 0; i < LENGTH; i++)
         printf("%g\t", ch[i]);
 
-    printf("\nThe maximum number arrary index:%d", find_max(ch));
+    printf("\nThe maximum number arrary index:%d", find_max_index(ch));
 
     return 0;
 }
 
-int find_max(double ch[])
+int find_max_index(double ch[])
 {
-    int temp;
     int array_index;
     double max = ch[0];
     for (int i = 0; i < LENGTH; i++)
