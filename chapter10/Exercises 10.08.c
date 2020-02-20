@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void copyarray(double *ch_another, double *ch_start, int number); //According to the requirements of the title,
+void copyarray(double *ch_another, double *ch_start, int number); //According to the requirements of the question,
                                                                   //the formal parameters are
                                                                   //the address of the array element and the number of elements
 void printout_array(double *ch, double *ch_another);
