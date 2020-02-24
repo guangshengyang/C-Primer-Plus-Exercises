@@ -9,8 +9,9 @@ void PrintOut(double (*dataarray)[5], double *grouptotal, double allaverage, dou
 int main(void)
 {
     double dataarray[3][5];
-    double grouptotal[3]; //Don't declare this array inside “GroupAverage()” function, declare in the main() function
+    double grouptotal[3]; //Don't declare this array inside “GroupAverage()” function
                           //and then use malloc to dynamically allocate memory, this is a bad habit
+                          //declare in the main() function is OK
 
     DataInput(dataarray, 3);
     GroupAverage(dataarray, 3, grouptotal);
