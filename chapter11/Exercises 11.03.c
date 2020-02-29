@@ -3,26 +3,23 @@
 #include <stdbool.h>
 #define N 20
 
-int GetWord(char ch, char *array);
+void GetWord(char *array);
 
 int main(void)
 {
-    char ch;
-    int count;
     char array[N];
 
     printf("Enter your favorite movie's name:");
-    count = GetWord(ch, array);
-    for (int i = 0; i < count; i++)
-        printf("%c", *(array + i));
+    GetWord(array);
+    puts(array);
 
     return 0;
 }
 
-int GetWord(char ch, char *array)
+void GetWord(char *array)
 {
+    char ch;
     bool inword = false; //inword to judge if the word is over
-    int count = 0;
 
     while ((ch = getchar()) != EOF)
     {
@@ -40,10 +37,6 @@ int GetWord(char ch, char *array)
         {
             inword = true; //Means the word is over
             *array++ = ch;
-            count++; //Record how many characters were read
         }
     }
-
-    return count;
 }
-
