@@ -15,9 +15,10 @@ int main(void)
     n = getchar();
     while (getchar() != '\n')
         continue;
+        
     printf("s1 pointer:%p\n", s1);
     char ret_ptr = mystrncpy(s1, s2, n);
- 
+
     printf("Return pointer:%p\n", ret_ptr);
     printf("%d\n", s1 - ret_ptr);
 
@@ -33,15 +34,5 @@ char *mystrncpy(char *s1, char *s2, int n)
             *s1++ = *s2;
         }
         return s1;
-
-        /*if (n+strlen(s1)> SIZE)
-        {
-            return s1;
-        }
-        else
-        {
-            return 
-        }*/
     }
 }
-
