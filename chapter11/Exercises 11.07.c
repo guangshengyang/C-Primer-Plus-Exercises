@@ -11,10 +11,13 @@ int main(void)
     char s1[SIZE] = "Welcome to VS Codecode";
     char s2[] = "with extentions";
 
-    n = Getn(n);
-    mystrncpy(s1, s2, n);
+    for (int i = 0; i < N; i++) //A loop to test the function
+    {
+        n = Getn(n);
+        mystrncpy(s1, s2, n);
 
-    puts(s1);
+        puts(s1);
+    }
 
     return 0;
 }
