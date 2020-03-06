@@ -1,40 +1,34 @@
 #include <stdio.h>
 #include <string.h>
 
-char string_in(char *s1, char *s2);
+char *string_in(char *s1, char *s2);
 
 int main(void)
 {
     char s1[] = "hats";
-    char s2[] = "ats";
-    printf("%p\n%p\n", s1, s2);
-    string_in(s1, s2);
-    printf("%p", string_in(s1, s2));
+    char s2[] = "at";
+
+    printf("The beggin of string s1 address:%p\n", s1);
+    printf("The returned address：%p", string_in(s1, s2));
+
     return 0;
 }
 
-char string_in(char *s1, char *s2)
+char *string_in(char *s1, char *s2)
 {
-    char *ret_s1;
-   
-    
-    while (*s1++ == *s2)
+    char s2_len = strlen(s2);
+    while (*s1 != *s2)
     {
-        ret_s1 = s1--;
-        printf("6666%p\n", ret_s1);
-        
-        for (int i = 0; i < strlen(s2); i++)
-        {
-            if (*s1++ == *s2++)
-            {
-                continue;
-            }
-            else
-            {
-                return NULL;
-            }
-        }
-        return ret_s1;
+        s1++;
+        continue;
     }
-    return NULL;
+
+    if (strncmp(s1, s2, s2_len)) //strncmp return value is the difference between the two characters
+    {                            //return 0 means they are the same
+        return NULL;             //Most of times,only need to care about the return value is 0 or not
+    }
+    else
+    {
+        return s1;
+    }
 }
