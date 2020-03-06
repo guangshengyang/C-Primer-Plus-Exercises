@@ -1,17 +1,44 @@
 #include <stdio.h>
 #include <string.h>
+#define SIZE 50
+#define N 10
 
+void GetString(char *s);
+void ClearCR(char *s);
 void *ReversePrint(char *s);
 
 int main(void)
 {
-    char s[] = "welcome to VS Code";
-    char *s_initial = s;
+    char s[SIZE];
 
-    ReversePrint(s);
-    puts(s_initial);
+    for (int i = 0; i < N; i++)
+    {
+        GetString(s);
+        char *s_initial = s; //Do not declare s_initial in other functions,
+                             //because the pointer variable declared will be revoked
+                             // from memory when the function ends
+        ReversePrint(s);
+        puts(s_initial);
+    }
     return 0;
 }
+
+void GetString(char *s)
+{
+    puts("Now enter string s the next line:");
+    fgets(s, SIZE, stdin); //fgets() store the CR(carriage return) in the array
+    ClearCR(s);            //CR need to replace by '\0',or program will meet bugs
+}
+
+void ClearCR(char *s)
+{
+    int i = 0;
+    while (s[i] != '\n')
+        s++;
+
+    s[i] = '\0';
+}
+
 void *ReversePrint(char *s)
 {
     int s_length = strlen(s);
