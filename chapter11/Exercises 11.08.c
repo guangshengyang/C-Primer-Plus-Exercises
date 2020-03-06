@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #define MAXSIZE 30
+#define N 5
 
 void GetString(char *s1, char *s2);
 void ClearCR(char *s);
@@ -11,17 +12,18 @@ int main(void)
     char s1[MAXSIZE];
     char s2[MAXSIZE];
 
-    GetString(s1, s2);
-    printf("The beggin of string s1 address:%p\n", s1);
-    printf("The returned address：%p", string_in(s1, s2));
-
+    for (int i = 0; i < N; i++)
+    {
+        GetString(s1, s2);
+        printf("The beggin of string s1 address:%p\n", s1);
+        printf("The returned address：%p\n", string_in(s1, s2));
+    }
     return 0;
 }
 
 void GetString(char *s1, char *s2)
 {
     puts("The program target is to find if string \"s2\" is in string \"s1\"\n");
-
     puts("Now enter string s1 next line:");
 
     fgets(s1, MAXSIZE, stdin); //fgets() store the CR(carriage return) in the array
