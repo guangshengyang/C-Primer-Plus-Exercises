@@ -1,63 +1,27 @@
 #include <stdio.h>
 #include <string.h>
-#define MAXSIZE 30
 
-void GetString(char *s1, char *s2);
-void ClearCR(char *s);
-char *string_in(char *s1, char *s2);
+void *ReversePrint(char *s);
 
 int main(void)
 {
-    char s1[MAXSIZE];
-    char s2[MAXSIZE];
-    
-    GetString(s1, s2);
-    printf("The beggin of string s1 address:%p\n", s1);
-    printf("The returned address：%p", string_in(s1, s2));
+    char s[] = "welcome to VS Code";
+    char *s_initial = s;
 
+    ReversePrint(s);
+    puts(s_initial);
     return 0;
 }
-
-void GetString(char *s1, char *s2)
+void *ReversePrint(char *s)
 {
-    puts("The program target is to find if string \"s2\" is in string \"s1\"\n"
-         "Now enter string s1 next line:");
+    int s_length = strlen(s);
+    char temp;
+    char *s_end = s + s_length - 1;
 
-    fgets(s1, MAXSIZE, stdin); //fgets() store the CR(carriage return) in the array
-    ClearCR(s1);               //CR need to replace by '\0',or program will meet bugs
-
-    puts("Now enter s2 next line:");
-
-    fgets(s2, MAXSIZE, stdin);
-    ClearCR(s2);
-}
-
-void ClearCR(char *s)
-{
-    int i = 0;
-    while (s[i] != '\n')
-        s++;
-
-    s[i] = '\0';
-}
-
-char *string_in(char *s1, char *s2)
-{
-    fputs(s1, stdout);
-    fputs(s2, stdout);
-    char s2_len = strlen(s2);
-    while (*s1 != *s2)
-    {
-        s1++;
-        continue;
-    }
-
-    if (strncmp(s1, s2, s2_len)) //strncmp return value is the difference between the two characters
-    {                            //return 0 means they are the same
-        return NULL;             //Most of times,only need to care about the return value is 0 or not
-    }
-    else
-    {
-        return s1;
+    for (int i = 0; i < s_length / 2; i++, s++, s_end--) //The method of dividing the judgment condition by two
+    {                                                    // is suitable for both odd and even numbers.
+        temp = *s_end;
+        *s_end = *s;
+        *s = temp;
     }
 }
