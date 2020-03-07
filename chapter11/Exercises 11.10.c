@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include <stdbool.h>
 #define SIZE 50
 
 void RemoveSpace_inString(char *s);
