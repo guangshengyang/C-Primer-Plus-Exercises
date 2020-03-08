@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAXSIZE 50
+#define LIM 10
+#define SIZE 50
 
-void GetString(char *s);
-void ClearCR(char *s);
+char *s_gets(char *s[],int n);
 void ShowMenu(void);
 void GetUserCmd(char c, char *s);
 
@@ -14,10 +14,14 @@ void Print_in1stwordOrd(char *s);
 
 int main(void)
 {
-    char s[MAXSIZE];
+    char s[LIM][SIZE];
     char ch;
-    GetString(s);
-    puts(s);
+
+    printf("Input up to %d lines, and I will sort them.\n", LIM);
+    printf("To stop press the EOF key at");
+
+    s_gets(s[], SIZE);
+   // puts(s);
 
     ShowMenu();
     GetUserCmd(ch, s);
@@ -25,26 +29,28 @@ int main(void)
     return 0;
 }
 
-void GetString(char *s)
+char *s_gets(char *s[], int n)
 {
-    char c;
+    char *ret_val;
     int i = 0;
-    c = getchar();
-    while ((c = getchar()) != EOF)
-        s[i++] = c;
 
-    s[i] = '\0';
-    ClearCR(s);
+    ret_val = fgets(s, n, stdin);
+    if (ret_val)
+    {
+        while (*s != '\n' && *s != '\0')
+            s++;
+        if (*s == '\n')
+            *s = '\0';
+        else
+        {
+            while (getchar() != '\n')
+                continue;
+        }
+    }
+   
+    return ret_val;
 }
 
-void ClearCR(char *s)
-{
-    int i = 0;
-    while (s[i] != '\n')
-        s++;
-
-    s[i] = '\0';
-}
 
 void ShowMenu(void)
 {
@@ -56,9 +62,10 @@ void ShowMenu(void)
          "q. Quit.\n\n"
          "Enter a character: ");
 }
-
+/*
 void GetUserCmd(char ch, char *s)
 {
+    int a, b, c, d, q;
     switch (ch)
     {
     case a:
@@ -79,6 +86,7 @@ void GetUserCmd(char ch, char *s)
         break;
     }
 }
+*/
 void Print_inOrigOrd(char *s)
 {
     puts(s);
@@ -86,7 +94,6 @@ void Print_inOrigOrd(char *s)
 
 void Print_inAsciiOrd(char *s)
 {
-    
 }
 void Print_inLenOrd(char *s);
 void Print_in1stwordOrd(char *s);
