@@ -1,19 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #define SIZE 50
 #define N 10
 
-void GetString(char *s);
+int GetString(char *s, int size);
 void ClearCR(char *s);
 void *ReversePrint(char *s);
 
 int main(void)
 {
     char s[SIZE];
-
+    int limitsize;
+    printf("Limited Size for user:");
+    scanf("%d", &limitsize);
+    fflush(stdin);
     for (int i = 0; i < N; i++)
     {
-        GetString(s);
+        GetString(s, limitsize);
         char *s_initial = s; //Do not declare s_initial in other functions,
                              //because the pointer variable declared will be revoked
                              // from memory when the function ends
@@ -23,11 +27,27 @@ int main(void)
     return 0;
 }
 
-void GetString(char *s)
+int GetString(char *s, int size)
 {
-    puts("Now enter string s the next line:");
-    fgets(s, SIZE, stdin); //fgets() store the CR(carriage return) in the array
-    ClearCR(s);            //CR need to replace by '\0',or program will meet bugs
+    char c;
+    int i = 0, count = 0;
+
+    while ((c = getchar()) != '\n')
+    {
+        s[i++] = c;
+        count++;
+    }
+    s[i++] = '\n';
+    count++;
+    s[i] = '\0';
+
+    if (count > size)
+    {
+        puts("note : The stream in buffer is not completed read by fgets() function.");
+        exit(1);
+    }
+    else
+        ClearCR(s);
 }
 
 void ClearCR(char *s)
@@ -52,3 +72,65 @@ void *ReversePrint(char *s)
         *s = temp;
     }
 }
+
+/*At first, I use fgets() to build GetString() function and remove CR(\n)
+But,then I found a bug "When user enter characters more than fgets() limited.
+So the \n won't be stored in array,but ClearCR based on \n to know where the string end,so program stop.
+Now,I rewrote the GetString() to fix the bug"
+
+---------------------------------------
+Previous function implementation code
+----------------------------
+void GetString(char *s)
+{
+    puts("Now enter string s the next line:");
+    fgets(s, SIZE, stdin); //fgets() store the CR(carriage return) in the array
+    ClearCR(s);            //CR need to replace by '\0',or program will meet bugs
+}
+
+void ClearCR(char *s)
+{
+    int i = 0;
+    while (s[i] != '\n')
+        s++;
+
+    s[i] = '\0';
+}
+
+---------------------------------------
+Improved function implementation code
+---------------------------
+
+int GetString(char *s, int size)
+{
+    char c;
+    int i = 0, count = 0;
+
+    while ((c = getchar()) != '\n')
+    {
+        s[i++] = c;
+        count++;
+    }
+    s[i++] = '\n';
+    count++;
+    s[i] = '\0';
+
+    if (count > size)
+    {
+        puts("note : The stream in buffer is not completed read by fgets() function.");
+        exit(1);
+    }
+    else
+        ClearCR(s);
+}
+
+void ClearCR(char *s)
+{
+    int i = 0;
+    while (s[i] != '\n')
+        s++;
+
+    s[i] = '\0';
+}
+
+*/
