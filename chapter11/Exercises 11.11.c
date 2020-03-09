@@ -10,6 +10,7 @@ char *s_gets(char *s, int n);
 void ShowMenu(void);
 void GetUserCmd(char *str[LIM], int num);
 int FirstWordLen(char *str);
+void Print_asSortedSeq(char *str[LIM], int num);
 
 void Print_inOrigOrd(char *str[], int num);
 void Print_inAsciiOrd(char *str[], int num);
@@ -33,6 +34,7 @@ int main(void)
 
     ShowMenu();
     GetUserCmd(sptr, ct);
+    Print_asSortedSeq(sptr, ct);
 
     return 0;
 }
@@ -101,8 +103,7 @@ void GetUserCmd(char *sptr[LIM], int num)
 
 void Print_inOrigOrd(char *str[], int num)
 {
-    for (int i = 0; i < num; i++)
-        puts(str[i]);
+    ;
 }
 
 void Print_inAsciiOrd(char *str[], int num)
@@ -121,8 +122,6 @@ void Print_inAsciiOrd(char *str[], int num)
             }
         }
     }
-    for (int i = 0; i < num; i++)
-        puts(str[i]);
 }
 void Print_inLenOrd(char *str[], int num)
 {
@@ -139,8 +138,6 @@ void Print_inLenOrd(char *str[], int num)
             }
         }
     }
-    for (int i = 0; i < num; i++)
-        puts(str[i]);
 }
 int FirstWordLen(char *str)
 {
@@ -170,6 +167,10 @@ void Print_in1stwordLen(char *str[], int num)
             }
         }
     }
+}
+
+void Print_asSortedSeq(char *str[LIM], int num)
+{
     for (int i = 0; i < num; i++)
         puts(str[i]);
 }
