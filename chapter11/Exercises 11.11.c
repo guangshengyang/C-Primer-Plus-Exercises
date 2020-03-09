@@ -27,7 +27,7 @@ int main(void)
     printf("To stop press the EOF key at a line;s start.\n");
 
     while (ct < LIM && s_gets(s[ct], SIZE) != NULL && s[ct][0] != '\0')
-    {
+    { //Assignment of two-digit string array
         sptr[ct] = s[ct];
         ct++;
     }
@@ -108,6 +108,8 @@ void Print_inOrigOrd(char *str[], int num)
 
 void Print_inAsciiOrd(char *str[], int num)
 {
+    // sort in ASCII collating sequence
+
     char *temp;
 
     for (int i = 0; i < num - 1; i++)
@@ -125,6 +127,7 @@ void Print_inAsciiOrd(char *str[], int num)
 }
 void Print_inLenOrd(char *str[], int num)
 {
+    // sort in string length order
     char *temp;
     for (int i = 0; i < num - 1; i++)
     {
@@ -141,6 +144,7 @@ void Print_inLenOrd(char *str[], int num)
 }
 int FirstWordLen(char *str)
 {
+    // Get each string first word's length
     int length = 0;
     while (isspace(*str)) // skip leading whitespace
         str++;
@@ -154,6 +158,7 @@ int FirstWordLen(char *str)
 
 void Print_in1stwordLen(char *str[], int num)
 {
+    // sort in first word's length order
     char *temp;
     for (int i = 0; i < num - 1; i++)
     {
