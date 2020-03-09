@@ -32,7 +32,8 @@ int main(void)
     }
 
     // Print_inOrigOrd(sptr, ct);
-    Print_inAsciiOrd(sptr, ct);
+    // Print_inAsciiOrd(sptr, ct);
+    Print_inLenOrd(sptr, ct);
     //ShowMenu();
     //GetUserCmd(ch, s);
 
@@ -120,11 +121,25 @@ void Print_inAsciiOrd(char *str[], int num)
         }
     }
     for (int i = 0; i < num; i++)
-        puts(str_old[i]);
+        puts(str[i]);
 }
 void Print_inLenOrd(char *str[], int num)
 {
-    
+    char *temp;
+    for (int i = 0; i < num - 1; i++)
+    {
+        for (int j = i + 1; j < num; j++)
+        {
+            if (strlen(str[i]) > strlen(str[j]))
+            {
+                temp = str[i];
+                str[i] = str[j];
+                str[j] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < num; i++)
+        puts(str[i]);
 }
 void Print_in1stwordOrd(char *str[], int num)
 {
