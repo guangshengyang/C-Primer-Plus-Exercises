@@ -1,35 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
 #define LIM 10
 #define SIZE 50
 
-char *s_gets(char *s[],int n);
+char *s_gets(char *s, int n);
 void ShowMenu(void);
-void GetUserCmd(char c, char *s);
+void GetUserCmd(char c, char *str[]);
+void ssort(char *str[], int num);
 
-void Print_inOrigOrd(char *s);
-void Print_inAsciiOrd(char *s);
-void Print_inLenOrd(char *s);
-void Print_in1stwordOrd(char *s);
+void Print_inOrigOrd(char *str[], int num);
+void Print_inAsciiOrd(char *str[], int num);
+void Print_inLenOrd(char *str[], int num);
+void Print_in1stwordOrd(char *str[], int num);
 
 int main(void)
 {
     char s[LIM][SIZE];
+    char *sptr[LIM];
     char ch;
+    int ct = 0;
 
     printf("Input up to %d lines, and I will sort them.\n", LIM);
-    printf("To stop press the EOF key at");
+    printf("To stop press the EOF key at a line;s start.\n");
 
-    s_gets(s[], SIZE);
-   // puts(s);
+    while (ct < LIM && s_gets(s[ct], SIZE) != NULL && s[ct][0] != '\0')
+    {
+        sptr[ct] = s[ct];
+        ct++;
+    }
 
-    ShowMenu();
-    GetUserCmd(ch, s);
+    // Print_inOrigOrd(sptr, ct);
+    Print_inAsciiOrd(sptr, ct);
+    //ShowMenu();
+    //GetUserCmd(ch, s);
 
     return 0;
 }
 
-char *s_gets(char *s[], int n)
+char *s_gets(char *s, int n)
 {
     char *ret_val;
     int i = 0;
@@ -37,20 +47,19 @@ char *s_gets(char *s[], int n)
     ret_val = fgets(s, n, stdin);
     if (ret_val)
     {
-        while (*s != '\n' && *s != '\0')
+        while (s[i] != '\n' && s[i] != '\0')
             s++;
-        if (*s == '\n')
-            *s = '\0';
+        if (s[i] == '\n')
+            s[i] = '\0';
         else
         {
             while (getchar() != '\n')
                 continue;
         }
     }
-   
+
     return ret_val;
 }
-
 
 void ShowMenu(void)
 {
@@ -87,13 +96,36 @@ void GetUserCmd(char ch, char *s)
     }
 }
 */
-void Print_inOrigOrd(char *s)
+
+void Print_inOrigOrd(char *str[], int num)
 {
-    puts(s);
+    for (int i = 0; i < num; i++)
+        puts(str[i]);
 }
 
-void Print_inAsciiOrd(char *s)
+void Print_inAsciiOrd(char *str[], int num)
+{
+    char *temp;
+
+    for (int i = 0; i < num - 1; i++)
+    {
+        for (int j = i + 1; j < num; j++)
+        {
+            if (strcmp(str[i], str[j]) > 0)
+            {
+                temp = str[i];
+                str[i] = str[j];
+                str[j] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < num; i++)
+        puts(str_old[i]);
+}
+void Print_inLenOrd(char *str[], int num)
+{
+    
+}
+void Print_in1stwordOrd(char *str[], int num)
 {
 }
-void Print_inLenOrd(char *s);
-void Print_in1stwordOrd(char *s);
