@@ -2,15 +2,6 @@
 #include <stdio.h>
 #define LENGTH 10
 
-double *find_max(double *ch);
-
-int main(void)
-{
-    double ch[LENGTH] = {5.1, 1.2, 6.2, 1.3, 8.2, 8.2, 3.6, 5.5, 10.0, 4.12};
-// Using Bubble sort
-#include <stdio.h>
-#define LENGTH 10
-
 double *arrary_sort(double *ch);
 
 int main(void)
