@@ -8,7 +8,7 @@
 
 char *s_gets(char *s, int n);
 void ShowMenu(void);
-void GetUserCmd(char c, char *str, num);
+void GetUserCmd(char *str[LIM], int num);
 int FirstWordLen(char *str);
 
 void Print_inOrigOrd(char *str[], int num);
@@ -20,7 +20,6 @@ int main(void)
 {
     char s[LIM][SIZE];
     char *sptr[LIM];
-    char ch;
     int ct = 0;
 
     printf("Input up to %d lines, and I will sort them.\n", LIM);
@@ -32,13 +31,8 @@ int main(void)
         ct++;
     }
 
-    // Print_inOrigOrd(sptr, ct);
-    // Print_inAsciiOrd(sptr, ct);
-    //Print_inLenOrd(sptr, ct);
-    // FirstWordLen(sptr);
-    // Print_in1stwordLen(sptr, ct);
-    //ShowMenu();
-    GetUserCmd(ch, sptr, ct);
+    ShowMenu();
+    GetUserCmd(sptr, ct);
 
     return 0;
 }
@@ -76,10 +70,10 @@ void ShowMenu(void)
          "Enter a character: ");
 }
 
-void GetUserCmd(char ch, char *sptr, int num)
+void GetUserCmd(char *sptr[LIM], int num)
 {
-    puts("Enter a character from " a, b, c, d, q " here to choose an option:");
-    while (getchar(!= '\n'))
+    char ch = getchar();
+    while (getchar() != '\n')
         continue;
 
     switch (ch)
