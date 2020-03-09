@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 #define LIM 10
 #define SIZE 50
 
 char *s_gets(char *s, int n);
 void ShowMenu(void);
-void GetUserCmd(char c, char *str[]);
-void ssort(char *str[], int num);
+void GetUserCmd(char c, char *str, num);
+int FirstWordLen(char *str);
 
 void Print_inOrigOrd(char *str[], int num);
 void Print_inAsciiOrd(char *str[], int num);
 void Print_inLenOrd(char *str[], int num);
-void Print_in1stwordOrd(char *str[], int num);
+void Print_in1stwordLen(char *str[], int num);
 
 int main(void)
 {
@@ -33,9 +34,11 @@ int main(void)
 
     // Print_inOrigOrd(sptr, ct);
     // Print_inAsciiOrd(sptr, ct);
-    Print_inLenOrd(sptr, ct);
+    //Print_inLenOrd(sptr, ct);
+    // FirstWordLen(sptr);
+    // Print_in1stwordLen(sptr, ct);
     //ShowMenu();
-    //GetUserCmd(ch, s);
+    GetUserCmd(ch, sptr, ct);
 
     return 0;
 }
@@ -72,31 +75,35 @@ void ShowMenu(void)
          "q. Quit.\n\n"
          "Enter a character: ");
 }
-/*
-void GetUserCmd(char ch, char *s)
+
+void GetUserCmd(char ch, char *sptr, int num)
 {
-    int a, b, c, d, q;
+    puts("Enter a character from " a, b, c, d, q " here to choose an option:");
+    while (getchar(!= '\n'))
+        continue;
+
     switch (ch)
     {
-    case a:
-        Print_inOrigOrd(s);
+    case 'a':
+        Print_inOrigOrd(sptr, num);
         break;
-    case b:
-        Print_inAsciiOrd(s);
+    case 'b':
+        Print_inAsciiOrd(sptr, num);
         break;
-    case c:
-        Print_inLenOrd(s);
+    case 'c':
+        Print_inLenOrd(sptr, num);
         break;
-    case d:
-        Print_in1stwordOrd(s);
+    case 'd':
+        FirstWordLen(sptr);
+        Print_in1stwordLen(sptr, num);
         break;
 
     default:
+        puts("Bye!");
         exit(0);
         break;
     }
 }
-*/
 
 void Print_inOrigOrd(char *str[], int num)
 {
@@ -141,6 +148,34 @@ void Print_inLenOrd(char *str[], int num)
     for (int i = 0; i < num; i++)
         puts(str[i]);
 }
-void Print_in1stwordOrd(char *str[], int num)
+int FirstWordLen(char *str)
 {
+    int length = 0;
+    while (isspace(*str)) // skip leading whitespace
+        str++;
+    while (!isspace(*str)) // get first word length
+    {
+        length++;
+        str++;
+    }
+    return length;
+}
+
+void Print_in1stwordLen(char *str[], int num)
+{
+    char *temp;
+    for (int i = 0; i < num - 1; i++)
+    {
+        for (int j = i + 1; j < num; j++)
+        {
+            if (FirstWordLen(str[i]) > FirstWordLen(str[j]))
+            {
+                temp = str[i];
+                str[i] = str[j];
+                str[j] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < num; i++)
+        puts(str[i]);
 }
