@@ -13,6 +13,7 @@ Exercise 10.06  Bubble Sort
 Exercise 10.07  Copy two-digital array
 
 Exercise 10.11  Another  better way to pass parameters for two-digital array(although all method share the same point
+
                 ---------need to pass Rows and Columns)
 
 Exercise 11.11  two-digital string  sort processing(Key word, strings sort)
