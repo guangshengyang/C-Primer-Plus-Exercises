@@ -12,7 +12,7 @@ int main(void)
     char str[SIZE];
     int storeresultary[6] = {0};
 
-    while ((c = getchar()) != EOF)
+    while ((c = getchar()) != EOF) //store the characters as string-array type
         str[i++] = c;
 
     if (str[--i] == '\n') // i++ make pointer point to next address
@@ -20,10 +20,9 @@ int main(void)
 
     Report(str, storeresultary);
 
+    printf("ch\tword\tupper\tlower\tpunct\tdigit\n"); //Print out
     for (int i = 0; i < 6; i++)
-    {
         printf("%d\t", storeresultary[i]);
-    }
 
     return 0;
 }
