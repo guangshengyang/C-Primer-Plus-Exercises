@@ -27,8 +27,10 @@ void Report(char *s, int *storeresultary)
 {
     bool inword = false;
     int word_count = 0;
-    int ch_upper = 0;
-    int ch_lower = 0;
+    int upper_count = 0;
+    int lower_count = 0;
+    int punct_count = 0;
+    int digit_count = 0;
 
     // char c;
 
@@ -43,13 +45,13 @@ void Report(char *s, int *storeresultary)
             inword = false;
 
         if (isupper(*s))
-            ch_upper++;
+            upper_count++;
         if (islower(*s))
-            ch_lower++;
+            lower_count++;
         if (ispunct(*s))
-            ch_upper++;
-        if (isupper(*s))
-            ch_upper++;
+            punct_count++;
+        if (isdigit(*s))
+            digit_count++;
 
         s++;
     }
