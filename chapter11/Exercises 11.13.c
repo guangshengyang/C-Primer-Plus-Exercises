@@ -1,67 +1,28 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdbool.h>
-#define SIZE 50
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    int i = 0;
-    char c;
-    char str[SIZE];
-    char store_start_end_ptr[SIZE] = {0};
-
-    while ((c = getchar()) != EOF) //store the characters as string-array type
-        str[i++] = c;
-
-    if (str[--i] == '\n') // i++ make pointer point to next address
-        str[i] = '\0';    // , using --i to make it move back first, then do if Statement
-    SwapCmdOrder(str, store_start_end_ptr);
+    for (int i = argc - 1; i > 0; i--)
+        printf("%s ", argv[i]);
 
     return 0;
 }
-void SwapCmdOrder(char *s, char *store_start_end_ptr)
-{
-    bool inword = false;
 
-    int i = 0, j = 0;
-    int n_word = 0;
-    int count = 0;
-    int wordlen[SIZE] = {0};
+/* 
+The c compiler allows the main () function to have no or two arguments.
 
-    while ((*s) != '\0')
-    {
+When main () has two arguments,
+the first argument is the number of strings in the command line (often called agrc, argument count), 
+the second argument is the argument value (argv, argument value)
 
-        if (!isspace(*s) && !inword) //c isn't blankspace and c isn't in word, so it's new word
-        {
-            inword = true;
-            store_start_end_ptr[j++] = s;
-            n_word++;
-        }
+The program stores command-line strings in memory and stores each string address in an array of pointers. 
+And store the address of the array in the second parameter of main (). 
+This parameter is a pointer to a pointer, called argv.
 
-        if (inword = true)
-        {
-            count++;
-        }
-        wordlen[i] = count;
-        if (isspace(*s) && inword)
-        {
-            count = 0;
-            inword = false;
-            i++;
-        }
-        s++;
-    }
-    for (int j = 0; j < n_word; j++)
-    {
-        if (n_word == j + 1)
-            wordlen[j] += 1;
+argv[0] point to first string
+argv[1] point to second string
+argv[2] point to third string
 
-        wordlen[j] -= 1;
-        printf("%d\t", wordlen[j]);
-        printf("%p\n", store_start_end_ptr[j]);
-    }
-    printf("\n\n");
-
-  
-}
+Many environment(Like Unix, Dos) often use spaces to indicate the end of one string and the beginning of another string. 
+You can use double quotes to solve this limitation. 
+*/
