@@ -1,5 +1,6 @@
 /* 
 Sample:
+
 PS C:\Users\trave\Documents\Visual Studio Code\Visual C> ./programname -p -u -l
 Welcome to VS Code!     <--- input
 Welcome to VS Code!     <--- -p    printout
@@ -18,22 +19,22 @@ int main(int argc, char *argv[])
 {
     char str[SIZE];
 
-    s_gets(str, SIZE);
-    for (int i = 1; i <= CMDNUMBER; i++)
-    {
+    s_gets(str, SIZE); //get a string user entered
 
+    for (int i = 1; i <= CMDNUMBER; i++) //Enter command line arguments in any order, the program can also run
+    {
         if (strcmp(argv[i], "-p") == 0)
         {
             puts(str);
         }
         else if (strcmp(argv[i], "-u") == 0)
         {
-            strupr(str);
+            strupr(str); //converts a given string to uppercase.
             puts(str);
         }
         else if (strcmp(argv[i], "-l") == 0)
         {
-            strlwr(str);
+            strlwr(str); //converts a given string to lowercase.
             puts(str);
         }
     }
@@ -62,4 +63,3 @@ char *s_gets(char *s, int n)
 
     return ret_val;
 }
-
