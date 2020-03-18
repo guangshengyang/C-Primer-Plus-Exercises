@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    int mode;
+    extern int mode;
 
     printf("Enter 0 for metric mode, 1 for US mode:");
     scanf("%d", &mode);
