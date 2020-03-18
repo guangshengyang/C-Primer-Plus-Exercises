@@ -1,3 +1,4 @@
+/** pe12-2b.c */
 #include <stdio.h>
 #include "pe12-2a.h"
 
@@ -22,3 +23,10 @@ int main(void)
 
     return 0;
 }
+
+/** pe12-2a.h */
+
+/** pe12-2a.h */
+28
+
+
