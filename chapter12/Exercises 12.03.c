@@ -104,3 +104,4 @@ void show_info(int* mode, double* dist, double* fuel)
         break;
     }
 }
+
