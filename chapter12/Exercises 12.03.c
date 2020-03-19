@@ -6,6 +6,10 @@
 #include "pe12-2a.h"
 
 
+#include <stdio.h>
+#include "pe12-2a.h"
+
+
 int main(void) 
 {
      int mode =0;
@@ -15,13 +19,17 @@ int main(void)
 
     printf("Enter 0 for metric mode, 1 for US mode:");
     scanf("%d", &mode);
-    set_mode(&mode, &last_mode);
+ 
     while (mode >= 0)
     {
-        get_info(mode,&dist,&fuel);
-        show_info(mode,dist,fuel);
+        get_info(&mode,&dist,&fuel);
+        show_info(&mode,&dist,&fuel);
         set_mode(&mode, &last_mode);
-    }
+
+        printf("Enter 0 for metric mode, 1 for US mode"
+            "(-1 to quit):");
+		scanf("%d", &mode);
+    } 
     printf("Done.\n");
 
     return 0;
@@ -29,12 +37,14 @@ int main(void)
 
 
 
+
+
 /* pe12-3a.h
 ---------------------------------------------------------------------- */
 
 void set_mode(int* mode, int* last_mode);
-void get_info(int mode, double* dist, double* fuel);
-void show_info(int mode, double dist, double fuel);
+void get_info(int *mode, double* dist, double* fuel);
+void show_info(int* mode, double* dist, double* fuel);
 
 
 /* pe12-3a.c
@@ -46,29 +56,28 @@ void set_mode(int *mode, int *last_mode)
 {  
     
 
-    if (mode > 1)
+    if (*mode > 1)
     {
-		if (last_mode == 0)
+		if (*last_mode == 0)
         {
             printf("Invaliad mode specified. Mode 0(metric) used\n");
-            mode = 0;
-          
+            *mode = 0; 
         }
-        if (last_mode == 1)
+        if (*last_mode == 1)
         {
             printf("Invaliad mode specified. Mode 1(US) used\n");
-            mode = 1;
-        
+            *mode = 1;
         }
     }
-    last_mode = mode;
+    *last_mode = *mode;
+
 	   
 }
 
-void get_info(int mode,double *dist,double *fuel)
+void get_info(int *mode,double *dist,double *fuel)
 {
 
-    switch (mode)
+    switch (*mode)
     {
     case 0:
         printf("Enter distance traveled in kilometers:");
@@ -90,19 +99,19 @@ void get_info(int mode,double *dist,double *fuel)
     }
 }
 
-void show_info(int mode, double dist, double fuel)
+void show_info(int *mode, double *dist, double *fuel)
 {
 
     double average;
 
-    switch (mode)
+    switch (*mode)
     {
     case 0:
-        average = (fuel / dist)*100 ;
+        average = (*fuel / *dist)*100 ;
         printf("Fuel consumption is %lf per 100 km.\n", average);
         break;
     case 1:
-        average = dist / fuel;
+        average = *dist / *fuel;
         printf("Fuel consumption is %lf miles per gallon.\n", average);
         break;
     default:
