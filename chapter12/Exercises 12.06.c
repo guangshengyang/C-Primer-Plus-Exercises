@@ -15,7 +15,6 @@ int main(void)
 
         for (int j = 0; j < TIMES; j++)
         {
-
             int digit = rand() % 10 + 1;
 
             switch (digit)
@@ -57,10 +56,8 @@ int main(void)
         printf("Round %d\n", i + 1);
 
         for (int k = 0; k < 10; k++)
-        {
-
             printf("Num_%-d: %-2d  ", k + 1, CountNumsTimes[k]);
-        }
+
         printf("\n\n");
     }
 
