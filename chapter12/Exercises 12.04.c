@@ -1,21 +1,20 @@
 #include <stdio.h>
 
-int g_calltimes = 0;
-
-void return_call_times(void);
+void return_call_times(int *calltimes);
 
 int main(void)
 {
-    for (int i = 0; i < 50; i++)
-        return_call_times();
+    int calltimes = 0;
 
-    printf("Call times:%d", g_calltimes);
+    for (int i = 0; i < 50; i++)
+        return_call_times(&calltimes);
+
+    printf("Call times:%d", calltimes);
 
     return 0;
 }
 
-void return_call_times()
+void return_call_times(int *calltimes)
 {
-    extern int g_calltimes;
-    g_calltimes++;
+   (*calltimes)++;
 }
