@@ -8,7 +8,7 @@ int main(void)
 
     for (int i = 0; i < 10; i++)
     {
-     //   srand((unsigned int)time(0));
+        srand((unsigned int)time(0));
         int CountNumsTimes[10] = {0};
 
         for (int j = 0; j < TIMES; j++)
@@ -52,9 +52,13 @@ int main(void)
                 break;
             }
         }
+        printf("Round %d\n", i + 1);
 
         for (int i = 0; i < 10; i++)
+        {
+
             printf("Num_%-d: %-2d  ", i + 1, CountNumsTimes[i]);
+        }
         printf("\n\n");
     }
 
