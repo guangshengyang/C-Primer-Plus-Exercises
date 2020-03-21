@@ -9,8 +9,15 @@ int main(void)
     printf("Enter the number of sets; enter q to stop:");
     while ((scanf("%d", &sets)) == 1)
     {
-        printf("How many sides and how many dice?");
+        printf("How many sides and how many dice? (Use a blankspace to separate two numbers) ");
         scanf("%d %d", &sides, &dics);
+
+        if (sets != sides * dics)
+        {
+            printf("Error, It's impossible, please.");
+            return 0;
+        }
+
         printf("Here are %d sets of %d %d-sided throws.\n", sets, sides, dics);
 
         srand((unsigned int)time(0));
