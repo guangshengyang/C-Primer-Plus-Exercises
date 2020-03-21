@@ -24,3 +24,5 @@ Exercise 11.13  Display command line arguments in reverse order(Only 9 lines)
 
 Exercise 11.16  Programs that recognize command line arguments
 
+Exercise 12.07  Use the return value of scanf() to determine whether read the right type of data. (e.g  loop untill enter q to quit)
+
