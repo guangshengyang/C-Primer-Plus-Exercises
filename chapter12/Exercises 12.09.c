@@ -23,6 +23,7 @@ int main(void)
     s_gets(temp_array, words_num * each_word_length); //get a string user entered
 
     char *array = (char *)malloc(words_num * each_word_length);
+    
     // To-DO check memory allocation
     
 
