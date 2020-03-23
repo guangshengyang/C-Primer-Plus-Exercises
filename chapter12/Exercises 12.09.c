@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdbool.h>
+#define SIZE 50
 
 char *s_gets(char *s, int n);
 int main(void)
@@ -19,19 +20,24 @@ int main(void)
 
     while (getchar() != '\n')
         continue;
-
+    char temp_array[SIZE];
     char *ptr = malloc(words_num * each_word_length);
     printf("Enter %d words now:", words_num);
     s_gets(temp_array, words_num * each_word_length); //get a string user entered
 
-    while ()
-
-        char *array = (char *)malloc(words_num * each_word_length);
+    bool inword = false;
+    ch = ptr;
+    char(*array)[each_word_length];
 
     // To-DO check memory allocation
-    while (!isspace(*array))
+
+    while (!isspace(ch) && !inword)
+        *array++ = &ch; //Assign string's word address to pointer array
+    if (isspace(ch) && inword)
+        inword = true;
+    if (inowrd)
     {
-        = *array++;
+        **array++ =
     }
 
     puts(temp_array);
