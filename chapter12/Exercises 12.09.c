@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 char *s_gets(char *s, int n);
 int main(void)
@@ -23,14 +24,14 @@ int main(void)
     printf("Enter %d words now:", words_num);
     s_gets(temp_array, words_num * each_word_length); //get a string user entered
 
+    while ()
 
-
-    char *array = (char *)malloc(words_num * each_word_length);
+        char *array = (char *)malloc(words_num * each_word_length);
 
     // To-DO check memory allocation
     while (!isspace(*array))
     {
-        =*array++;
+        = *array++;
     }
 
     puts(temp_array);
