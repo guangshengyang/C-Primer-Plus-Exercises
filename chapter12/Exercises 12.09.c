@@ -22,6 +22,10 @@ int main(void)
     printf("Enter %d words now:", words_num);
     s_gets(temp_array, words_num * each_word_length); //get a string user entered
 
+    char *array = (char *)malloc(words_num * each_word_length);
+    // To-DO check memory allocation
+    
+
     puts(temp_array);
     return 0;
 }
