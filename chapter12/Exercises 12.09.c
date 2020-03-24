@@ -29,7 +29,8 @@ int main(void)
     ch = ptr;
     char(*array)[each_word_length];
 
-    // To-DO check memory allocation
+    // To-DO check memor
+    y allocation
 
     while (!isspace(ch) && !inword)
         *array++ = &ch; //Assign string's word address to pointer array
