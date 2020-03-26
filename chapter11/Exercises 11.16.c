@@ -1,50 +1,50 @@
-/* 
-Sample:
+/* 从键盘输入一个字符串，然后按照下面要求输出一个新字符串。
+新串是在原串中，每两个字符之间插入一个空格，如原串为 abed, 则新串为 a b c d。
+要求在函数insert中完成新串的产生; 并在函数中完成所有相应的输入和输出。*/
 
-PS C:\Users\trave\Documents\Visual Studio Code\Visual C> ./programname -p -u -l
-Welcome to VS Code!     <--- input
-Welcome to VS Code!     <--- -p    printout
-WELCOME TO VS CODE!     <--- -u    printout
-welcome to vs code!     <--- -l    printout
-
- */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #define SIZE 50
-#define CMDNUMBER 3
 
-char *s_gets(char *s, int n);
+char* input_s(void);
+void* insert(char* s);
+char* s_gets(char* s, int n);
+void output(char* s);
 
-int main(int argc, char *argv[])
+int main(void)
 {
-    char str[SIZE];
+    char* str;
+    char* str_new;
 
-    s_gets(str, SIZE); //get a string user entered
-
-    for (int i = 1; i <= CMDNUMBER; i++) //Enter command line arguments in any order, the program can also run
-    {
-        if (strcmp(argv[i], "-p") == 0)
-        {
-            puts(str);
-        }
-        else if (strcmp(argv[i], "-u") == 0)
-        {
-            strupr(str); //converts a given string to uppercase.
-            puts(str);
-        }
-        else if (strcmp(argv[i], "-l") == 0)
-        {
-            strlwr(str); //converts a given string to lowercase.
-            puts(str);
-        }
-    }
+    str = input_s();
+    str_new = insert(str);
+    output(str_new);
+    free(str_new);
 
     return 0;
 }
 
-char *s_gets(char *s, int n)
+void* insert(char* s)
 {
-    char *ret_val;
+    int s_len = strlen(s);
+    char* s_new = (char*)malloc((2 * s_len) * sizeof(char)); //malloc()可以使不必在主函数声明字符串数组
+
+    char* s_new_begin = s_new;
+    for (int i = 0; i < s_len; i++)
+    {
+        *s_new++ = *s++;
+        *s_new++ = ' ';
+    }
+    *(--s_new) = '\0';     //将被空格覆盖的 \0 重新赋值回来
+    s_new = s_new_begin; //将 s_new 指针指回去，可有可无，无用 s_new_begin 替代，等效
+
+    return s_new; //返回新字符串首字符指针
+}
+
+char* s_gets(char* s, int n)
+{
+    char* ret_val;
     int i = 0;
 
     ret_val = fgets(s, n, stdin);
@@ -62,4 +62,20 @@ char *s_gets(char *s, int n)
     }
 
     return ret_val;
+}
+
+
+char* input_s(void)
+{
+    static char s[SIZE];
+
+    printf("Enter a string:");
+    s_gets(s,SIZE);
+
+    return s;
+}
+
+void output(char* s)
+{
+    puts(s);
 }
