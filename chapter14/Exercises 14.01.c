@@ -15,6 +15,7 @@ struct Days array[MONTHS];
 
 int main(void)
 {
+    
 
     return 0;
 }
