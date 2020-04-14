@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define SIZE 10
 #define LENGTH 3
+#define MONTHS 12
 
 struct Days
 {
@@ -8,9 +9,9 @@ struct Days
     char months_abbreviation[LENGTH];
     int months_days;
     int months_num;
-
-
 };
+
+struct Days array[MONTHS];
 
 int main(void)
 {
