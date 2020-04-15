@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
 #define SIZE 10
 #define LENGTH 3
@@ -15,7 +17,7 @@ struct Days
 
 struct Days months_array[MONTHS] = {
     {"January", "Jan", 31, 1},
-    {"February", "Feb", 28, 2},
+    {"February", "Feb", 28, 2}, //nonleap year,Feb has days
     {"March", "Mar", 31, 3},
     {"April", "Apr", 30, 4},
     {"May", "May", 31, 5},
@@ -28,28 +30,48 @@ struct Days months_array[MONTHS] = {
     {"December", "Dec", 31, 12}};
 
 char *s_gets(char *s, int n);
+int count_days(char *s, struct Days *array);
 
 int main(void)
 {
-    int days_sum = 0;
     char monthsname[SIZE];
-    extern struct Days months_array[MONTHS];
+    // extern struct Days months_array[MONTHS];
+
     printf("Enter the number of the months name(abbreviation is OK, too)\n"
            "I'll count the how many days till this month(include this month):");
-    s_gets(monthsname, SIZE);
+    s_gets(monthsname, SIZE); //get user input
+
+    int days_sum = count_days(monthsname, months_array);
+
+    printf("Until this month the days_sum:%d", days_sum);
+
+    return 0;
+}
+
+int count_days(char *s, struct Days *array)
+{
+    int days_sum = 0;
+    bool flag = true;
+    bool legality = false;
 
     for (int i = 0; i < MONTHS; i++)
     {
-        while ((strcmp(monthsname, months_array[i].months_name) || strcmp(monthsname, months_array[i].months_name_abbreviation)) != 0)
-        {
-            days_sum = days_sum + months_array[i].months_days;
-            break;
-        }
+        if (!(strcmp(s, array[i].months_name) && strcmp(s, array[i].months_name_abbreviation)))
+            legality = true;
     }
-    printf("%s\n", monthsname);
-    printf("The days_sum:%d", days_sum);
+    if (!legality)
+    {
+        printf("Invalid Input.\n"); //Verify that the input's legality
+        exit(EXIT_FAILURE);
+    }
 
-    return 0;
+    for (int i = 0; i < MONTHS; i++)
+    {
+        flag = (bool)(strcmp(s, array[i].months_name) && strcmp(s, array[i].months_name_abbreviation));
+        days_sum = days_sum + array[i].months_days;
+        if (flag == false)
+            return days_sum;
+    }
 }
 
 char *s_gets(char *s, int n)
