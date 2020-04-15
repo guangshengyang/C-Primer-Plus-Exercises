@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 #define SIZE 10
 #define LENGTH 3
 #define MONTHS 12
@@ -18,7 +19,7 @@ struct Days months_array[MONTHS] = {
     {"March", "Mar", 31, 3},
     {"April", "Apr", 30, 4},
     {"May", "May", 31, 5},
-    {"June ", "Jun", 30, 6},
+    {"June", "Jun", 30, 6},
     {"July", "Jul", 31, 7},
     {"August", "Aug", 31, 8},
     {"September", "Sep", 30, 9},
@@ -39,15 +40,13 @@ int main(void)
 
     for (int i = 0; i < MONTHS; i++)
     {
-
-        if (strcmp(monthsname, months_array[i].months_name) || strcmp(monthsname, months_array[i].months_name_abbreviation))
+        while ((strcmp(monthsname, months_array[i].months_name) || strcmp(monthsname, months_array[i].months_name_abbreviation)) != 0)
         {
             days_sum = days_sum + months_array[i].months_days;
-            // return months_array[i].months_Serial_num;
-            return days_sum;
+            break;
         }
     }
-
+    printf("%s\n", monthsname);
     printf("The days_sum:%d", days_sum);
 
     return 0;
