@@ -52,7 +52,7 @@ int count_days(char *s, struct Days *array)
 {
     int days_sum = 0;
     bool flag = true;
-    bool legality = false;
+    bool legality = false; //input legality
 
     for (int i = 0; i < MONTHS; i++)
     {
