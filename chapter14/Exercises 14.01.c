@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #define SIZE 10
 #define LENGTH 3
 #define MONTHS 12
@@ -29,19 +30,27 @@ char *s_gets(char *s, int n);
 
 int main(void)
 {
+    int days_sum = 0;
     char monthsname[SIZE];
+    extern struct Days months_array[MONTHS];
     printf("Enter the number of the months name(abbreviation is OK, too)\n"
            "I'll count the how many days till this month(include this month):");
     s_gets(monthsname, SIZE);
-    count_days();
+
+    for (int i = 0; i < MONTHS; i++)
+    {
+
+        if (strcmp(monthsname, months_array[i].months_name) || strcmp(monthsname, months_array[i].months_name_abbreviation))
+        {
+            days_sum = days_sum + months_array[i].months_days;
+            // return months_array[i].months_Serial_num;
+            return days_sum;
+        }
+    }
+
+    printf("The days_sum:%d", days_sum);
 
     return 0;
-}
-
-int count_days()
-{
-    extern struct Days months_array[MONTHS];
-    
 }
 
 char *s_gets(char *s, int n)
