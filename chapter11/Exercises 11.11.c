@@ -24,7 +24,7 @@ int main(void)
     int ct = 0;
 
     printf("Input up to %d lines, and I will sort them.\n", LIM);
-    printf("To stop press the EOF key at a line;s start.\n");
+    printf("To stop press the EOF key at a line start.\n");
 
     while (ct < LIM && s_gets(s[ct], SIZE) != NULL && s[ct][0] != '\0')
     { //Assignment of two-digit string array

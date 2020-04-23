@@ -12,13 +12,14 @@ Exercise 10.06  Bubble Sort
 
 Exercise 10.07  Copy two-digital array
 
-Exercise 10.11  Another  better way to pass parameters for two-digital array(although all method share the same point
+Exercise 10.11  Another  better way to pass parameters for two-digital array(although all methods have the same key-point mind, that is
 
-                need to pass Rows and Columns
+                Need to pass Rows and Columns
 
 Exercise 11.10  Remove blacksnake in string in a simple way
 
-Exercise 11.11  two-digital string  sort processing(Key word, strings sort)
+Exercise 11.11  two-digital string sort processing(Key word, strings sort)
+                Skip leading spaces
 
 Exercise 11.12  Count words, uppercase letters, lowercase letters, punctuation characters, number characters
 
