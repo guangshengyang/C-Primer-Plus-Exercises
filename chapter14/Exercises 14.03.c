@@ -26,7 +26,6 @@ int main(void)
     return 0;
 }
 
-
 void get_books(struct Book *library[], int count) //pass struct itself
 {
     while (count < MAXBKS && library[count]->title[0] != '\0')
